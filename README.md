@@ -1,7 +1,5 @@
 # APIFrontEnd
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ![License](https://img.shields.io/github/license/strawhat19/APIFrontEnd)
 ![State](https://img.shields.io/github/deployments/strawhat19/APIFrontEnd/Production)
 ![Total Lines](https://img.shields.io/tokei/lines/github/strawhat19/APIFrontEnd)
