@@ -1,4 +1,5 @@
 let apiUrl = `https://randomuser.me/api/`;
+
 let elementsWhereWeDisplayData = document.querySelector(`.frontendApiDataToDisplay`);
 let imageToDisplay = document.querySelector(`.imageToDisplay`);
 
@@ -33,28 +34,14 @@ fetch(openWeatherCurrentWeatherURL).then(resp => resp.json()).then(data => {
     });
 });
 
-let weatherFromServerURL = `http://localhost:3000/weather`;
+let server = `http://localhost:3000`;
+let dataFromServer = `${server}/data`;
+let weatherFromServerURL = `${server}/weather`;
+ 
+// fetch(weatherFromServerURL).then(resp => resp.json()).then(data => {
+//     console.log(`OpenWeather Data from Server`, data);
+// });
 
-fetch(weatherFromServerURL).then(resp => resp.json()).then(data => {
-    console.log(`OpenWeather Data from Server`, data);
+fetch(dataFromServer).then(resp => resp.json()).then(data => {
+    console.log(`Data from Server`, data);
 });
-
-// const fetchCheerio = async () => {
-//     try {
-//         await fetch('http://example.com')
-//         .then(response => response.text())
-//         .then(html => {
-//             let parser = new DOMParser();
-//             let doc = parser.parseFromString(html, 'text/html');
-//             let h1 = doc.querySelector('h1');
-//             console.log(h1.textContent, doc);
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-// fetchCheerio();

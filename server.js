@@ -3,14 +3,35 @@ const express = require('express');
 const request = require('request');
 const cors = require('cors');
 const path = require('path');
-const port = 3000;
+
+const port = process.env.PORT || 3000;
+const hostName = process.env.SERVER_HOSTNAME || `localhost`;
+const serverUrl = process.env.SERVER_URL || `http://localhost:${port}`;
+
+let openWeatherAPIKey = `ce5300e7acaa327ad655b8a21d5130d8`;
+let openWeatherCurrentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=${openWeatherAPIKey}`;
 
 const app = express();
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, `public`)));
 
-app.get('/', (req, res) => {
+// app.set('view engine', 'ejs'); // set EJS as the view engine
+
+const data = {
+  config: {
+    port, 
+    server: {
+      hostName,
+      url: serverUrl,
+    }
+  }
+};
+
+// Routes
+app.get(`/`, (req, res) => {
+  // res.render(`index`, {data});
+
   const url = req.query.url;
   if (!url) {
     return res.send('Missing "url" query parameter.');
@@ -19,8 +40,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-let openWeatherAPIKey = `ce5300e7acaa327ad655b8a21d5130d8`;
-let openWeatherCurrentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=${openWeatherAPIKey}`;
+app.get(`/data`, (req, res) => {
+  res.json({
+    data: data,
+  });
+});
 
 app.get(`/weather`, async (req, res) => {
   try {
