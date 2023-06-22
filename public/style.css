@@ -1,7 +1,7 @@
 body {
     grid-gap: 1em;
     flex-direction: column;
-    height: 800px;
+    height: 95vh;
     background: green;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,4 +21,18 @@ body {
 
 img.nasa {
     max-height: 300px;
+}
+
+.apisToDisplay {
+    grid-gap: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.apisToDisplay .apiData {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
 }
